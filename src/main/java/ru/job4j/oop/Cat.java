@@ -4,7 +4,7 @@ public class Cat {
     private String name;
     private String food;
 
-    public void giveNick(String nick){
+    public void giveNick(String nick) {
         this.name = nick;
     }
 
