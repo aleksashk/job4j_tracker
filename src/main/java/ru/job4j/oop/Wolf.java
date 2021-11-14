@@ -6,6 +6,6 @@ public class Wolf {
     }
 
     public void tryEat(Ball ball) {
-        ball.tryRun(true);
+        ball.tryRun(false);
     }
 }
