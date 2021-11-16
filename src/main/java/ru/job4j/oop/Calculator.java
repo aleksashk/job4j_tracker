@@ -8,7 +8,7 @@ public class Calculator {
     }
 
     public static int minus(int y) {
-        return x - y;
+        return y - x;
     }
 
     public int divide(int y) {
@@ -29,11 +29,9 @@ public class Calculator {
         Calculator calculator = new Calculator();
         int rsl = calculator.multiply(5);
         System.out.println(rsl);
-
-        Calculator calculator1 = new Calculator();
         int number = 5;
         int minusNumber = Calculator.minus(number);
-        int divideNumber = calculator1.divide(number);
-        calculator1.sumAllOperation(number);
+        int divideNumber = calculator.divide(number);
+        calculator.sumAllOperation(number);
     }
 }
