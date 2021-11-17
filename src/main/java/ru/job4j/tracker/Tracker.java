@@ -51,11 +51,9 @@ public class Tracker {
         if (!rsl) {
            return false;
         }
-        int start = index + 1;
-        int length = size - index - 1;
+        System.arraycopy(items, index + 1, items, index, size - index - 1);
         items[size - 1] = null;
         size--;
-        System.arraycopy(items, start, items, index, length);
         return true;
     }
 
