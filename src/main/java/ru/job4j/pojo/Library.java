@@ -13,10 +13,17 @@ public class Library {
             System.out.println(library[i]);
         }
 
-        library = new Book[]{book3, book1, book2, cleanCode};
+        library[0] = book3;
+        library[3] = cleanCode;
 
-        for (int i = 0; i < library.length; i++) {
-            System.out.println(library[i]);
+        for (Book value : library) {
+            System.out.println(value);
+        }
+
+        for (Book book : library) {
+            if (book.getName().equals("Clean code")) {
+                System.out.println(book);
+            }
         }
     }
 }
