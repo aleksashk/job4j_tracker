@@ -19,10 +19,7 @@ public class Matches {
             turn = !turn;
             count -= matches;
         }
-        if (!turn) {
-            System.out.println("Выиграл первый игрок");
-        } else {
-            System.out.println("Выиграл второй игрок");
-        }
+        String msg = turn ? "Выиграл второй игрок" : "Выиграл первый игрок";
+        System.out.println(msg);
     }
 }
