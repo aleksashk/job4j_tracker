@@ -27,7 +27,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             item.setId(id);
-            this.items[index].setName(item.getName());
+            items[index]=item;
             return true;
         }
         return false;
