@@ -6,6 +6,7 @@ public class ReplaceAction implements UserAction {
     public ReplaceAction(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "Item deleted";

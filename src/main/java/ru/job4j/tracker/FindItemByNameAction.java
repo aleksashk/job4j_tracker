@@ -6,6 +6,7 @@ public class FindItemByNameAction implements UserAction {
     public FindItemByNameAction(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "Item found by name";
