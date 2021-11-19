@@ -9,19 +9,20 @@ public class ReplaceAction implements UserAction {
 
     @Override
     public String name() {
-        return "Item deleted";
+        return "Edit item";
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println(name());
+        out.println("=== Edit item ====");
         int id = input.askInt("Enter id: ");
-        if (tracker.delete(id)) {
-            System.out.println("Заявка удалена успешно.");
-            return true;
+        String name = input.askStr("Enter name: ");
+        Item item = new Item(name);
+        if (tracker.replace(id, item)) {
+            out.println("Заявка изменена успешно.");
         } else {
-            System.out.println("Ошибка удаления заявки.");
-            return false;
+            out.println("Ошибка замены заявки.");
         }
+        return true;
     }
 }
