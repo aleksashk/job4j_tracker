@@ -15,8 +15,8 @@ public class StartUITest {
         UserAction[] actions = {new ExitAction()};
         new StartUI(output).init(in, tracker, actions);
         Assert.assertEquals(output.toString(),
-                "Menu:" + System.lineSeparator() +
-                        "0. ExitAction Program" + System.lineSeparator()
+                "Menu:" + System.lineSeparator()
+                        + "0. ExitAction Program" + System.lineSeparator()
         );
     }
 
