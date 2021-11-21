@@ -203,7 +203,5 @@ public class StartUITest {
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         Assert.assertEquals(selected, 1);
-
-
     }
 }
