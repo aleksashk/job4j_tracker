@@ -36,12 +36,12 @@ public class StartUITest {
         String ln = System.lineSeparator();
         Assert.assertEquals(output.toString(),
                 "Menu:" + ln
-                        + "0. Edit item" + ln
+                        + "0. Replace item" + ln
                         + "1. ExitAction Program" + ln
-                        + "=== Edit item ====" + ln
+                        + "Replace item" + ln
                         + "Заявка изменена успешно." + ln
                         + "Menu:" + ln
-                        + "0. Edit item" + ln
+                        + "0. Replace item" + ln
                         + "1. ExitAction Program" + ln
         );
     }
@@ -68,7 +68,7 @@ public class StartUITest {
                 "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. ExitAction Program" + ln
-                        + "=== Show all items ====" + ln
+                        + "Show all items" + ln
                         + item + ln
                         + item1 + ln
                         + item2 + ln
@@ -102,7 +102,7 @@ public class StartUITest {
                 "Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. ExitAction Program" + ln
-                        + "=== Find items by name ====" + ln
+                        + "Find items by name" + ln
                         + item + ln
                         + item1 + ln
                         + "Menu:" + ln
@@ -130,7 +130,7 @@ public class StartUITest {
                 "Menu:" + ln
                         + "0. Find item by id" + ln
                         + "1. ExitAction Program" + ln
-                        + "=== Find item by id ====" + ln
+                        + "Find item by id" + ln
                         + item + ln
                         + "Menu:" + ln
                         + "0. Find item by id" + ln
