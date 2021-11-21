@@ -10,7 +10,7 @@ public final class Log4File {
     private Log4File() {
     }
 
-    public static Log4File getInstance(){
+    public static Log4File getInstance() {
         if (instance == null) {
             instance = new Log4File();
         }
