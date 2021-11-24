@@ -1004,39 +1004,57 @@ public interface Service {
 и  услуги
 
 public class Divination implements Service {
+
     private String label;
+    
     private double price;
 
     public Divination(String label, double price) {
+    
         this.label = label;
+        
         this.price = price;
+        
     }
 
     public double getPrice() {
+    
         return this.price;
+        
     }
 
     public String getLabel() {
+    
         return this.label;
+        
     }
 }
 
 
 public class Horoscope implements Service {
-    private String label;
-    private double price;
 
+    private String label;
+    
+    private double price;
+    
     public Horoscope(String label, double price) {
+    
         this.label = label;
+        
         this.price = price;
+        
     }
 
     public double getPrice() {
+    
         return this.price;
+        
     }
 
     public String getLabel() {
+    
         return this.label;
+        
     }
 }
 
@@ -1044,14 +1062,20 @@ public class Horoscope implements Service {
 гороскоп от клиента):
 
 public static void main(String[] args) {
+
     double cost;
     // Гадание на Таро
+    
     Service taro = new Divination("Таро", 1000);
+    
     // И персональный гороскоп
+    
     Service personalHoroscope = new Horoscope("Персональный гороскоп", 9000);
+    
     cost = taro.getPrice() + personalHoroscope.getPrice();
-
+    
     System.out.println(cost);
+    
 }
 
 и результат работы программы:
@@ -1070,36 +1094,51 @@ public static void main(String[] args) {
 классы Гадание + Чакры или Гадание + Аура к текущему Гадание:
 
 public class Divination implements Service {
+
     // Здесь своя стоимость и другие методы
+    
 }
 
 
 public class DivinationWithChakras implements Service {
+
     // Здесь своя стоимость и другие методы
+    
 }
 
 
 public class DivinationWithAura implements Service {
-    // Здесь своя стоимость и другие методы
-}
 
+    // Здесь своя стоимость и другие методы
+    
+}
 
 или как раз использовать субклассирование, т.е. расширять родительский класс 
 дочерним
 
 public class DivinationWithAura extends Divination {
+
     public DivinationWithAura(String label, double price) {
+    
         super(label, price);
+        
     }
+    
     // Здесь своя стоимость и другие методы
+    
 }
 
 
 public class DivinationWithChakras extends Divination {
+
     public DivinationWithChakras(String label, double price) {
+    
         super(label, price);
+        
     }
+    
     // Здесь своя стоимость и другие методы
+    
 }
 
 Но минусы видны сразу, развивая духовность всего мира у нас могут появится новые 
@@ -1108,7 +1147,9 @@ public class DivinationWithChakras extends Divination {
 класса Гадания с двумя опциями вместе, а не по отдельности:
 
 public class DivinationWithChakrasAndAura implements Service {
+
     // Здесь своя стоимость и другие методы
+    
 }
 
 
@@ -1120,46 +1161,67 @@ public class DivinationWithChakrasAndAura implements Service {
 Интерфейс как и было с самого начала
 
 public interface Service {
+
     public double getPrice();
+    
     public String getLabel();
+    
 }
 
 2 класса услуг, также как и было ранее:
 
 public class Divination implements Service {
+
     private String label;
+    
     private double price;
 
     public Divination(String label, double price) {
+    
         this.label = label;
+        
         this.price = price;
+        
     }
 
     public double getPrice() {
+    
         return this.price;
+        
     }
 
     public String getLabel() {
+    
         return this.label;
+        
     }
 }
 
 
 public class Horoscope implements Service {
+
     private String label;
+    
     private double price;
 
     public Horoscope(String label, double price) {
+    
         this.label = label;
+        
         this.price = price;
+        
     }
 
     public double getPrice() {
+    
         return this.price;
+        
     }
 
     public String getLabel() {
+    
         return this.label;
+        
     }
 }
 
@@ -1167,50 +1229,76 @@ public class Horoscope implements Service {
 Декоратор для дополнительных опций 
 
 public class OptionDecorator implements Service {
+
     private Service service;
+    
     private String label;
+    
     private double price;
+    
 
     public OptionDecorator(Service service, String label, double price) {
+    
         this.service = service;
+        
         this.label = label;
+        
         this.price = price;
+        
     }
 
     public double getPrice() {
+    
         return this.price + service.getPrice();
+        
     }
 
     public String getLabel() {
+    
         return this.label + service.getLabel();
+        
     }
 }
 
 И сами опции (пока 2 штуки):
 
 public class Aura extends OptionDecorator {
+
     public Aura(Service service) {
+    
         super(service, "Характеристика ауры", 1500);
+        
     }
+    
 }
 
 
 public class Chakra extends OptionDecorator {
+
     public Chakra(Service service) {
+    
         super(service, "Характеристика чакр", 500);
+        
     }
+    
 }
 
 Ну и сам заказ
 
 public static void main(String[] args) {
+
     // Гадание на Таро
+    
     Service taro = new Divination("Таро", 1000);
+    
     Service chakra = new Chakra(taro);
+    
     Service aura = new Aura(chakra);
 
     // И общая стоимость
+    
     System.out.println(aura.getPrice());
+    
 }
 
 
@@ -1228,36 +1316,54 @@ public static void main(String[] args) {
 нам потребуется написать всего 2 дополнительных класса:
 
 public class Channeling extends OptionDecorator {
+
     public Channeling(Service service) {
+    
         super(service, "Полет в Поле Чудес", 99999);
+        
     }
+    
 }
 
 
 public class Avatar extends OptionDecorator {
+
     public Avatar(Service service) {
+    
         super(service, "Ваша любовь в соц сетях", 5555);
+        
     }
+    
 }
 
 и можно добавлять их к любой услуге:
 
 public static void main(String[] args) {
+
     // Гадание на Таро
+    
     Service taro = new Divination("Таро", 1000);
+    
     Service chakra = new Chakra(taro);
+    
     Service aura = new Aura(chakra);
 
     // И общая стоимость
+    
     System.out.println(aura.getPrice());
 
     // Гороскоп
+    
     Service horoscope = new Horoscope("Персональный гороскоп", 1000);
+    
     Service channenling = new Channeling(horoscope);
+    
     Service avatar = new Avatar(channenling);
 
     // И общая стоимость
+    
     System.out.println(avatar.getPrice());
+    
 }
 
 и результат работы программы (который нам нужен):
