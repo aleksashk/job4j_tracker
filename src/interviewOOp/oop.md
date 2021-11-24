@@ -1424,8 +1424,11 @@ public class Auto {
    }
 
    public void fill() {
+   
        System.out.println("Заправить бензин!");
+       
    }
+   
 }
 
 Казалось бы, разве могут в такой простой ситуации возникнуть проблемы? Ну, на самом деле, они уже возникли…
@@ -1446,9 +1449,13 @@ public class ChildrenBuggies extends Auto {
 public class ChildrenBuggies extends Auto {
 
    @Override
+   
    public void fill() {
+   
        System.out.println("Игрушечную машину нельзя заправить!");
+       
    }
+   
 }
 
 Но это решение сложно назвать удачным как минимум из-за дублирования кода. К примеру, большая часть классов будет использовать метод из родительского класса, но другая часть классов будет вынуждена его переопределить.
@@ -1461,6 +1468,7 @@ public class ChildrenBuggies extends Auto {
 public interface Fillable {
 
    public void fill();
+   
 }
 
 Мы создадим интерфейс Fillable с одним методом fill(). Соответственно, те машины, которые необходимо заправлять, будут имплементировать этот интерфейс, а другие машины (к примеру, наш багги) — не будут.
@@ -1492,6 +1500,7 @@ public interface Fillable {
 public interface FillStrategy {
 
    public void fill();
+   
 }
 
 Зачем нам нужен этот интерфейс? Все просто.
@@ -1501,24 +1510,37 @@ public interface FillStrategy {
 public class HybridFillStrategy implements FillStrategy {
 
    @Override
+   
    public void fill() {
+   
        System.out.println("Заправляем бензином или электричеством на выбор!");
+       
    }
+   
 }
 
 public class F1PitstopStrategy implements FillStrategy {
 
    @Override
+   
    public void fill() {
+   
        System.out.println("Заправляем бензин только после всех остальных процедур пит-стопа!");
+       
    }
+   
 }
 
 public class StandartFillStrategy implements FillStrategy {
+
    @Override
+   
    public void fill() {
+   
        System.out.println("Просто заправляем бензин!");
+       
    }
+   
 }
 
 Мы создали три стратегии поведения — для обычных машин, для гибридов и для болидов Формулы-1.
@@ -1531,15 +1553,21 @@ public class Auto {
    FillStrategy fillStrategy;
 
    public void fill() {
+   
        fillStrategy.fill();
+       
    }
 
    public void gas() {
+   
        System.out.println("Едем вперед");
+       
    }
 
    public void stop() {
+   
        System.out.println("Тормозим!");
+       
    }
 
 }
@@ -1551,22 +1579,31 @@ public class Auto {
 public class F1Car extends Auto {
 
    public F1Car() {
+   
        this.fillStrategy = new F1PitstopStrategy();
+       
    }
+   
 }
 
 public class HybridAuto extends Auto {
 
    public HybridAuto() {
+   
        this.fillStrategy = new HybridFillStrategy();
+       
    }
+   
 }
 
 public class Sedan extends Auto {
 
    public Sedan() {
+   
        this.fillStrategy = new StandartFillStrategy();
+       
    }
+   
 }
 
 Посмотрим, что у нас получилось:
@@ -1583,6 +1620,7 @@ public class Main {
        hybrid.fill();
        f1car.fill();
    }
+   
 }
 
 Вывод в консоль:
@@ -1603,43 +1641,59 @@ public class Auto {
    private FillStrategy fillStrategy;
 
    public Auto(FillStrategy fillStrategy) {
+   
        this.fillStrategy = fillStrategy;
+       
    }
 
    public void fill() {
+   
        this.fillStrategy.fill();
+       
    }
 
    public void gas() {
+   
        System.out.println("Едем вперед");
+       
    }
 
    public void stop() {
+   
        System.out.println("Тормозим!");
+       
    }
+   
 }
 
 public class Sedan extends Auto {
 
    public Sedan() {
+   
        super(new StandartFillStrategy());
+       
    }
+   
 }
-
-
 
 public class HybridAuto extends Auto {
 
    public HybridAuto() {
+   
        super(new HybridFillStrategy());
+       
    }
+   
 }
 
 public class F1Car extends Auto {
 
    public F1Car() {
+   
        super(new F1PitstopStrategy());
+       
    }
+   
 }
 
 Запустим наш метод main() (он остался без изменений), и получим тот же результат!
@@ -1661,20 +1715,29 @@ public class Auto {
    FillStrategy fillStrategy;
 
    public void fill() {
+   
        fillStrategy.fill();
+       
    }
 
    public void gas() {
+   
        System.out.println("Едем вперед");
+       
    }
 
    public void stop() {
+   
        System.out.println("Тормозим!");
+       
    }
 
    public void setFillStrategy(FillStrategy fillStrategy) {
+   
        this.fillStrategy = fillStrategy;
+       
    }
+   
 }
 
 Теперь мы можем менять стратегии на ходу:
@@ -1684,10 +1747,13 @@ public class Main {
    public static void main(String[] args) {
 
        ChildrenBuggies buggies = new ChildrenBuggies();
+       
        buggies.setFillStrategy(new StandartFillStrategy());
-
+       
        buggies.fill();
+       
    }
+   
 }
 
 Если вдруг детские машины-багги начнут заправлять бензином, наша программа будет готова к такому варианту развития событий :)
