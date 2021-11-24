@@ -939,18 +939,24 @@ public final void wait()
 
 ## 36. Что такое шаблоны проектирования?
 
-**Паттерн проектирования** — это часто встречающееся решение определённой проблемы при проектировании архитектуры 
+**Паттерн проектирования** — это часто встречающееся решение определённой проблемы при 
+проектировании архитектуры 
 программ.
 
-В отличие от готовых функций или библиотек, паттерн нельзя просто взять и скопировать в программу. Паттерн представляет 
-собой не какой-то конкретный код, а общую концепцию решения той или иной проблемы, которую нужно будет ещё подстроить 
+В отличие от готовых функций или библиотек, паттерн нельзя просто взять и скопировать в 
+программу. Паттерн представляет 
+собой не какой-то конкретный код, а общую концепцию решения той или иной проблемы, 
+которую нужно будет ещё подстроить 
 под нужды вашей программы.
 
-Паттерны часто путают с алгоритмами, ведь оба понятия описывают типовые решения каких-то известных проблем. Но если 
-алгоритм — это чёткий набор действий, то паттерн — это высокоуровневое описание решения, реализация которого может 
+Паттерны часто путают с алгоритмами, ведь оба понятия описывают типовые решения каких-то 
+известных проблем. Но если 
+алгоритм — это чёткий набор действий, то паттерн — это высокоуровневое описание решения, 
+реализация которого может 
 отличаться в двух разных программах.
 
-Если привести аналогии, то алгоритм — это кулинарный рецепт с чёткими шагами, а паттерн — инженерный чертёж, на котором 
+Если привести аналогии, то алгоритм — это кулинарный рецепт с чёткими шагами, а паттерн — 
+инженерный чертёж, на котором 
 нарисовано решение, но не конкретные шаги его реализации.
 
 ### Из чего состоит паттерн?
@@ -968,10 +974,293 @@ public final void wait()
 
 ## 37. Объясните шаблон "декоратор".
 
-**Декоратор** — это структурный паттерн проектирования, который позволяет динамически добавлять объектам новую 
-функциональность, оборачивая их в полезные «обёртки».
+паттерн Декоратор динамически наделяет объект новыми возможностями и является альтернативой 
+субклассированию в области расширения функциональности.
 
-[Декоратор. Также известен как: Wrapper, Обёртка, ](https://refactoring.guru/ru/design-patterns/decorator)
+Давайте попробуем на примере рассмотреть это определение подробнее. 
+
+Предположим Вы создали одну очередную современную религию и планируете предоставлять людям 
+соответствующие услуги. Т.к. современные тенденции преследуют вегетарианство, экологию, 
+развитие человека, а «традиционные» религии (или атеизм в конце концов) людей почему-то 
+не устраивают, то вы следуя мейнстриму создаете очередную религию New Age (некий синтез 
+из имеющихся религий, взяв с каждой то что нравится). 
+
+В начале вы предоставляете следующие услуги:
+1. Гадание
+2. Гороскоп
+
+Т.е. выглядит все следующим образом:
+
+Имеется интерфейс услуги с ценой естественно :) и описанием
+
+public interface Service {
+    public double getPrice();
+    public String getLabel();
+}
+
+и  услуги
+
+public class Divination implements Service {
+    private String label;
+    private double price;
+
+    public Divination(String label, double price) {
+        this.label = label;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+}
+
+
+public class Horoscope implements Service {
+    private String label;
+    private double price;
+
+    public Horoscope(String label, double price) {
+        this.label = label;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+}
+
+Ну и соответственно появилось 2 заказа (гадание на картах Таро и персональный 
+гороскоп от клиента):
+
+public static void main(String[] args) {
+    double cost;
+    // Гадание на Таро
+    Service taro = new Divination("Таро", 1000);
+    // И персональный гороскоп
+    Service personalHoroscope = new Horoscope("Персональный гороскоп", 9000);
+    cost = taro.getPrice() + personalHoroscope.getPrice();
+
+    System.out.println(cost);
+}
+
+и результат работы программы:
+
+10000.0
+
+
+Все бы хорошо, но таких как Вы уже сотни, если не тысячи и нужно продолжать развивать 
+духовность людей, а то им уже не интересно. Поэтому как вариант были предложены 
+дополнительные опции к текущим услугам. Так например при выборе услуги гадания 
+(Таро или на кофейной гуще), дополнительной опцией можно заказать характеристику
+чакр или ауры (со своей стоимостью каждой). 
+
+Как это можно было бы реализовать, чтобы не вносить изменения в имеющиеся классы 
+услуги, где уже все настроено и правильно считается. Можно создать дополнительные 
+классы Гадание + Чакры или Гадание + Аура к текущему Гадание:
+
+public class Divination implements Service {
+    // Здесь своя стоимость и другие методы
+}
+
+
+public class DivinationWithChakras implements Service {
+    // Здесь своя стоимость и другие методы
+}
+
+
+public class DivinationWithAura implements Service {
+    // Здесь своя стоимость и другие методы
+}
+
+
+или как раз использовать субклассирование, т.е. расширять родительский класс 
+дочерним
+
+public class DivinationWithAura extends Divination {
+    public DivinationWithAura(String label, double price) {
+        super(label, price);
+    }
+    // Здесь своя стоимость и другие методы
+}
+
+
+public class DivinationWithChakras extends Divination {
+    public DivinationWithChakras(String label, double price) {
+        super(label, price);
+    }
+    // Здесь своя стоимость и другие методы
+}
+
+Но минусы видны сразу, развивая духовность всего мира у нас могут появится новые 
+дополнительные опции, а значит новые классы, а если еще потребуется комбинировать 
+текущие, то классы будут разрастаться стремительно, как минимум уже не хватает 
+класса Гадания с двумя опциями вместе, а не по отдельности:
+
+public class DivinationWithChakrasAndAura implements Service {
+    // Здесь своя стоимость и другие методы
+}
+
+
+Вот здесь можно использовать тот самый «спасительный» паттерн Декоратор. Для этого 
+мы создадим класс для дополнительных опций, который будет также имплементировать Service, 
+но также содержать  Service. И соответственно когда нам потребуется сделать заказ по 
+гаданию да еще с 2 опциями вместе, то выглядеть это будет следующим образом:
+
+Интерфейс как и было с самого начала
+
+public interface Service {
+    public double getPrice();
+    public String getLabel();
+}
+
+2 класса услуг, также как и было ранее:
+
+public class Divination implements Service {
+    private String label;
+    private double price;
+
+    public Divination(String label, double price) {
+        this.label = label;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+}
+
+
+public class Horoscope implements Service {
+    private String label;
+    private double price;
+
+    public Horoscope(String label, double price) {
+        this.label = label;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+}
+
+
+Декоратор для дополнительных опций 
+
+public class OptionDecorator implements Service {
+    private Service service;
+    private String label;
+    private double price;
+
+    public OptionDecorator(Service service, String label, double price) {
+        this.service = service;
+        this.label = label;
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return this.price + service.getPrice();
+    }
+
+    public String getLabel() {
+        return this.label + service.getLabel();
+    }
+}
+
+И сами опции (пока 2 штуки):
+
+public class Aura extends OptionDecorator {
+    public Aura(Service service) {
+        super(service, "Характеристика ауры", 1500);
+    }
+}
+
+
+public class Chakra extends OptionDecorator {
+    public Chakra(Service service) {
+        super(service, "Характеристика чакр", 500);
+    }
+}
+
+Ну и сам заказ
+
+public static void main(String[] args) {
+    // Гадание на Таро
+    Service taro = new Divination("Таро", 1000);
+    Service chakra = new Chakra(taro);
+    Service aura = new Aura(chakra);
+
+    // И общая стоимость
+    System.out.println(aura.getPrice());
+}
+
+
+3000.0
+
+который дает результат суммы основной услуги и 2 дополнительных опций. А значит, не нужно 
+на каждую доп. опцию (или их комбинацию) создавать новый класс. К тому же данные опции 
+можно применять не только к услуге Гадание, но также и к услуге Гороскоп. 
+
+Поэтому когда в ближайшем будущем нам потребуется внедрить следующие дополнительные опции: 
+
+- совместимость партнеров по аватаркам в социальных сетях
+- улучшение денежного потока через дистанционный ченненлинг
+
+нам потребуется написать всего 2 дополнительных класса:
+
+public class Channeling extends OptionDecorator {
+    public Channeling(Service service) {
+        super(service, "Полет в Поле Чудес", 99999);
+    }
+}
+
+
+public class Avatar extends OptionDecorator {
+    public Avatar(Service service) {
+        super(service, "Ваша любовь в соц сетях", 5555);
+    }
+}
+
+и можно добавлять их к любой услуге:
+
+public static void main(String[] args) {
+    // Гадание на Таро
+    Service taro = new Divination("Таро", 1000);
+    Service chakra = new Chakra(taro);
+    Service aura = new Aura(chakra);
+
+    // И общая стоимость
+    System.out.println(aura.getPrice());
+
+    // Гороскоп
+    Service horoscope = new Horoscope("Персональный гороскоп", 1000);
+    Service channenling = new Channeling(horoscope);
+    Service avatar = new Avatar(channenling);
+
+    // И общая стоимость
+    System.out.println(avatar.getPrice());
+}
+
+и результат работы программы (который нам нужен):
+
+3000.0
+106554.0
 
 [к оглавлению](#OOP)
 
