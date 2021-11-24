@@ -994,8 +994,11 @@ public final void wait()
 Имеется интерфейс услуги с ценой естественно :) и описанием
 
 public interface Service {
+
     public double getPrice();
+    
     public String getLabel();
+    
 }
 
 и  услуги
