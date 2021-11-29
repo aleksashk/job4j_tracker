@@ -17,4 +17,16 @@ public class PhoneDictionaryTest {
         String actual = "Arsentev";
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void whenDontFind() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        ArrayList<Person> persons = phones.find("123");
+        int expected = persons.size();
+        int actual = 0;
+        Assert.assertEquals(expected, actual);
+    }
 }
