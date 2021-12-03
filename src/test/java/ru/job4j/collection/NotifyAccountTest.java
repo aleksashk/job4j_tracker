@@ -3,13 +3,9 @@ package ru.job4j.collection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 public class NotifyAccountTest {
 
@@ -41,7 +37,7 @@ public class NotifyAccountTest {
                 Arrays.asList(
                         new Account("987654321", "Petr Petrov", "122h1j2g9i877"),
                         new Account("123456789", "Ivan Ivanov", "0g1h1j2k7i8uu")
-                        )
+                )
         );
         Assert.assertEquals(expected, actual);
     }
