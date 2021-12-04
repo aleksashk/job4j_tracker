@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListSort {
     public static List<String> sort(List<String> data) {
-        Collections.sort(data, Comparator.nullsLast(Comparator.reverseOrder()));
+        data.sort(Comparator.nullsLast(Comparator.reverseOrder()));
         return data;
     }
 }
