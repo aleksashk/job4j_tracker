@@ -78,13 +78,13 @@
 
 + упрощают взаимодействие разных частей программы, т.к. являются универсальным способом хранения и передачи данных.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 3. Какие данные могут хранить коллекции?
 
 Коллекции могут хранить любые ссылочные типы данных.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 4. Какие есть типы коллекций Как они характеризуются?
 
@@ -101,7 +101,7 @@ Map не наследуется от Collection.)
 
 Справочник по Java Collections Framework https://habr.com/ru/post/237043/
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 5. Назовите основные реализации List, Set, Map?
 
@@ -111,7 +111,7 @@ Map не наследуется от Collection.)
 
 + **Map:** HashMap, LinkedHashMap, TreeMap
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 6. В чём отличие ArrayList от LinkedList?
 
@@ -137,7 +137,7 @@ Map не наследуется от Collection.)
 В среднем, сложности одинаковые, но все же `ArrayList` предпочтительнее использовать. 
 `LinkedList` рекомендуется использовать, только когда преобладает удаление или вставка в начало или конец списка.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 7. В чём отличие HashSet от TreeSet?
 
@@ -147,13 +147,13 @@ Map не наследуется от Collection.)
 
 **TreeSet** хранит данные в отсортированном виде (в основе реализации бинарное красно-черное дерево).
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 8. В чём отличие Set от Map?
 
 сет это список ключей от мапы.
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#collections)
 
 ## 9. Как задается порядок следования объектов в коллекции Как отсортировать коллекцию?
 
@@ -167,7 +167,7 @@ Map не наследуется от Collection.)
 + Если нет, то у коллекции вызвать метод `sort()` и передать ему `Comparator` в качестве аргумента `collection.sort(new MyComparator())`.
 Либо использовать метод `Collections.sort(collection, new MyComparator())`.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 10. Чем отличается Comparable от Comparator?
 
@@ -201,7 +201,7 @@ https://netjs.blogspot.com/2015/10/difference-between-comparable-and-comparator-
 
 https://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-comparator-in-java/
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 11. Что такое сортировка по принципу Natural Order?
 
@@ -215,7 +215,7 @@ https://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-compa
 
 Остальные классы нужно руками делать `Comparable` или `Comparator`.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 12. Что такое equals и hashcode?
 
@@ -228,7 +228,7 @@ https://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-compa
 
 Объекты всех коллекций в названии которых есть *Hash...* должны иметь `hashcode` и `equals`.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 13. Какие есть способы перебора всех элементов List?
 
@@ -297,7 +297,7 @@ while(listIterator.hasPrevious()) {
     
 https://www.codeflow.site/ru/article/java-iterate-list    
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 14. Как реализован цикл foreach?
 
@@ -305,7 +305,7 @@ https://www.codeflow.site/ru/article/java-iterate-list
 
 (И наоборот, если коллекция `extends` от `Iterable`, то мы можем перебирать элементы этой коллекции с помощью `foreach`)
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 15. В чем разница между Iterator и ListIterator?
 
@@ -320,7 +320,7 @@ https://www.codeflow.site/ru/article/java-iterate-list
 + `ListIterator` позволяет модифицировать список, добавляя/заменяя/удаляя элементы с помощью методов `add()`, `set()`
 `remove()`. Iterator не поддерживает данного функционала.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 16. Как происходит удаление элементов из ArrayList?
 
@@ -333,13 +333,13 @@ System.arraycopy(es, i + 1, es, i, newSize - i)
 es[size = newSize] = null;
 ```
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 17. Как происходит удаление элементов из LinkedList?
 
 Заменяются ссылки `previous` и `next` у соседних элементов.
 
-[к оглавлению](#collections-lite)
+[к оглавлению](#collections)
 
 ## 18. Расскажите иерархию интерфейсов Collections framework?
 
@@ -375,7 +375,7 @@ es[size = newSize] = null;
 
 Справочник по Java Collections Framework https://habr.com/ru/post/237043/
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 19. Назовите основные методы интерфейса Collections?
 
@@ -397,7 +397,7 @@ es[size = newSize] = null;
 + `boolean equals(Object o)`
 + `int hashCode()`
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 20. Может ли null использоваться в качестве ключа в Map?
 
@@ -408,13 +408,13 @@ es[size = newSize] = null;
 
 В непустой `TreeMap` положить `null`-ключ нельзя из-за обязательного вызова `compareTo()`.
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 21. Может ли Set содержать null?
 
 для `HashSet` работает. `TreeSet` — только для первого элемента.
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 22. Как преобразовать массив строк в ArrayList?
 
@@ -422,7 +422,7 @@ es[size = newSize] = null;
 Arrays.asList(words)
 ```
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 23. Как отсортировать список в обратном порядке?
 
@@ -430,7 +430,7 @@ Arrays.asList(words)
 List reversedList = Collections.reverse(list)
 ```
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 24. Какие реализации SortedSet вы знаете и в чем их особенность?
 
@@ -438,7 +438,7 @@ List reversedList = Collections.reverse(list)
 
 `TreeSet` все равно в каком порядке вы добавляете в него элементы, преимущества этой структуры данных будут сохраняться.
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 25. В каких случаях разумно использовать массив, а не ArrayList?
 
@@ -448,7 +448,7 @@ List reversedList = Collections.reverse(list)
 Массивы могут быть быстрее и кушать меньше памяти. 
 Списки теряют в производительности из-за возможности автоматического увеличения размера и сопутствующих проверок.
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
 
 ## 26. Какие коллекции синхронизированы?
 
@@ -468,4 +468,4 @@ Collections.unmodifiableSet(set);
 Collections.unmodifiableMap(map);
 ```
 
-[к оглавлению](#Collections-Lite)
+[к оглавлению](#Collections)
