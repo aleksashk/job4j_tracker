@@ -17,6 +17,7 @@ public class Departments {
                 start.append(el).append("/");
             }
         }
+
         return new ArrayList<>(tmp);
     }
 
