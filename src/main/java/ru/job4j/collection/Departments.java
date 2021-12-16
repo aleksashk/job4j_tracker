@@ -17,14 +17,12 @@ public class Departments {
                 start.append(el).append("/");
             }
         }
-
         return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
         orgs.sort(Comparator.naturalOrder());
     }
-
     public static void sortDesc(List<String> orgs) {
         orgs.sort(new DepDescComp());
     }
