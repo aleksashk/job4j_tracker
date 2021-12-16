@@ -1,7 +1,5 @@
 package ru.job4j.collection;
 
-import ru.job4j.comparator.NaturalOrder;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
