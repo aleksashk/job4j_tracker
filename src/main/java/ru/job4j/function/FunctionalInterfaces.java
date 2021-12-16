@@ -11,6 +11,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class FunctionalInterfaces {
+
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
