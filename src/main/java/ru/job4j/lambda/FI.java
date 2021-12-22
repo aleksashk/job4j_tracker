@@ -27,11 +27,19 @@ public class FI {
         Comparator<String> cmpSize = (left, right) -> left.length() - right.length();
         list.sort(cmpSize);
 
-        //на параметре строке left вызываем метод compareTo() и передаём туда строку right;
+        /**
+         * Компаратор для строк через лямбда. Строки сравниваются через метод compareTo.
+         * на параметре строке left вызываем метод compareTo() и передаём туда строку right;
+         * @param left - левая строка для сравнения
+         * @param right - правая строка для сравнения
+         */
         Comparator<String> cmpText = (left, right) -> left.compareTo(right);
 
-        //от размера строки right вычитаем размер строки left и таким образом организовываем
-        //сортировку строк по убыванию
+        /**
+         * Компаратор для строк через лямбда. Компаратор сортирует строки по убыванию длины.
+         * @param left - левая строка для сравнения
+         * @param right - правая строка для сравнения
+         */
         Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
     }
 }
