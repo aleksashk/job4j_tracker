@@ -23,11 +23,11 @@ public class StrategyUsage {
                 )
         );
 
-        System.out.println("Строка после преобразования: " + usage.transform(str->str.toUpperCase(), "aBCdEfghKLmnpRstU"));
+        System.out.println("Строка после преобразования: " + usage.transform(str -> str.toUpperCase(), "aBCdEfghKLmnpRstU"));
 
-        System.out.println(usage.transform(str->str.concat("работает корректно."), "Строка после преобразования: "));
+        System.out.println(usage.transform(str -> str.concat("работает корректно."), "Строка после преобразования: "));
 
-        System.out.println("Строка после преобразования: " + usage.transform(str->str.trim(), "    aBC dEfghK Lmnp RstU        "));
+        System.out.println("Строка после преобразования: " + usage.transform(str -> str.trim(), "    aBC dEfghK Lmnp RstU        "));
     }
 
     public boolean check(Predicate<String> pred, String s) {
