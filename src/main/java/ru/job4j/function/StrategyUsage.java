@@ -1,5 +1,6 @@
 package ru.job4j.function;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class StrategyUsage {
@@ -21,9 +22,19 @@ public class StrategyUsage {
                         str -> str.contains("rn"), "Surname Name"
                 )
         );
+
+        System.out.println("Результат работы transform: " + usage.transform(str->str.toUpperCase(), "aBCdEfghKLmnpRstU"));
+
+        System.out.println("Результат работы transform: " + usage.transform(str->str.concat(" работает корректно."), "Строка после преобразования "));
+
+        System.out.println("Результат работы transform: " + usage.transform(str->str.trim(), "    aBC dEfghK Lmnp RstU        "));
     }
 
     public boolean check(Predicate<String> pred, String s) {
         return pred.test(s);
+    }
+
+    public String transform(Function<String, String> fun, String s) {
+        return fun.apply(s);
     }
 }
