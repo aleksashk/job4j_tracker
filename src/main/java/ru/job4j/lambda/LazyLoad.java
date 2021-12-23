@@ -16,6 +16,5 @@ public class LazyLoad {
 
         names = new String[]{"Ivan", "Petr"};
         Arrays.sort(names, lengthCmp);
-
     }
 }
