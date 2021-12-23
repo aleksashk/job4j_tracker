@@ -40,6 +40,6 @@ public class FI {
          * @param left - левая строка для сравнения
          * @param right - правая строка для сравнения
          */
-        Comparator<String> cmpDescSize = (left, right) -> right.length() - left.length();
+        Comparator<String> cmpDescSize = (left, right) -> Integer.compare(right.length(),left.length());
     }
 }
