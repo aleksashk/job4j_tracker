@@ -20,5 +20,6 @@ public class RefMethod {
         } else {
             System.out.println(value);
         }
+
     }
 }
