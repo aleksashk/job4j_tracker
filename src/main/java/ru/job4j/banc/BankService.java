@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Класс описывает функциональность банковской системы.
@@ -34,8 +35,9 @@ public class BankService {
      * @param account - экземпляр класса Account.
      */
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        if (user != null && !users.get(user).contains(account)) {
+        Optional<User> opt = findByPassport(passport);
+        if (opt.isPresent() && !users.get(opt.get()).contains(account)) {
+            User user = opt.get();
             users.get(user).add(account);
         }
     }
@@ -43,17 +45,20 @@ public class BankService {
     /**
      * Метод осуществляет поиск пользователя в базе банка по паспортным данным.
      * Если пользователь с паспортными данными {@code passport} существует в системе,
-     * то метод возвращает данного пользователя {@code user}.
+     * то метод возвращает данного пользователя {@code user}, который завернут в Optional.
      * @param passport - паспортные данные клиента, которые представлены в виде строки.
-     * @return возвращается экземпляр класса User, значение поля {@code passport} которого
+     * @return возвращается экземпляр класса Optional, значение поля {@code passport} которого
      * соответствует передаваемому параметру passport
      */
-    public User findByPassport(String passport) {
-        return users.keySet()
-                .stream()
-                .filter(user -> user.getPassport().equals(passport))
-                .findFirst()
-                .orElse(null);
+    public Optional<User> findByPassport(String passport) {
+        Optional<User> rsl = Optional.empty();
+        for (User user : users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                rsl = Optional.of(user);
+                break;
+            }
+        }
+        return rsl;
     }
 
     /**
@@ -69,8 +74,9 @@ public class BankService {
      * соответствует передаваемому параметру passport
      */
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        if (user != null) {
+        Optional<User> opt = findByPassport(passport);
+        if (opt.isPresent()) {
+            User user = opt.get();
             return users.get(user)
                     .stream()
                     .filter(u -> u.getRequisite().equals(requisite))
