@@ -9,13 +9,13 @@ import static org.junit.Assert.assertThat;
 public class PriorityQueueTest {
     @Test
     public void whenHigherPriority() {
-        PriorityQueue queue = new PriorityQueue();
+        var queue = new PriorityQueue();
         queue.put(new Task("low", 5));
         queue.put(new Task("urgent", 1));
         queue.put(new Task("middle", 3));
-        Task result = queue.take();
-        String expected = "urgent";
-        String actual = result.getDesc();
+        var result = queue.take();
+        var expected = "urgent";
+        var actual = result.getDesc();
         Assert.assertEquals(expected, actual);
     }
 }
