@@ -599,6 +599,43 @@ orElse(), orElseThrow():
 ## Расскажите про фабричные методы List.of, Set.of, Map.of
 С приходом Java 9 создавать immutable коллекции намного проще.
 
+В интерфейсы коллекций добавили методы получения списка из набора элементов.
+
+Примеры:
+
+List.of
+
+List.of(5, 1, 2).forEach(System.out::print);
+
+Set.of
+
+Set.of(5, 1, 2).forEach(System.out::print);
+
+Map.of
+
+Map.of("first", 1, "second", 2)
+        .forEach((v, k) -> System.out.println(v + " " + k));
+
+Обратите внимание все коллекции имеют один и тот же метод of. Не нужно помнить методы asList asMap asSet. 
+
+Важно понимать, что метод of возвращает коллекцию, которую можно прочитать, но нельзя изменять 
+или добавлять элементы.
+
+Попытка добавить элемент в List.of.
+
+List<Integer> rsl = List.of(5, 1, 2);
+rsl.add(0);
+
+
+Метод of(..) удобно использовать в тестах.
+
+Было
+
+List<Integer> expect = Arrays.asList(1, 2, 3);
+Стало
+
+List<Integer> expect = List.of(1, 2, 3);
+
 + List
 Создание списка выглядит так:
 ```java List<Integer> nums = List.of(1,2,3,4,5); ```
