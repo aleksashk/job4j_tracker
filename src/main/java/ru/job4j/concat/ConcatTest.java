@@ -6,9 +6,9 @@ public class ConcatTest {
 
         for (int i = 0; i < 1000; i++) {
             long startTime = System.currentTimeMillis();
-            String str = "Job4j";
+            StringBuilder str = new StringBuilder("Job4j");
             for (int index = 0; index < 9999; index++) {
-                str = str + index;
+                str.append(index);
             }
             System.out.println("\t\tМиллисекунд: " + (System.currentTimeMillis() - startTime));
         }
