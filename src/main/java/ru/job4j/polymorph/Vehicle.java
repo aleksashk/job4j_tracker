@@ -1,6 +1,7 @@
 package ru.job4j.polymorph;
 
 public interface Vehicle extends Fuel {
+    int WHEELS = 4;
 
     void accelerate();
 
@@ -9,5 +10,9 @@ public interface Vehicle extends Fuel {
     void steer();
 
     void changeGear();
+
+    static void getDragCoefficient() {
+        System.out.println("Формула расчета коэффициента аэродинамического сопротивления автомобиля");
+    }
 
 }
