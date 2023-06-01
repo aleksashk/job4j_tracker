@@ -1,6 +1,6 @@
 package ru.job4j.polymorph;
 
-public class SportCar implements Vehicle, Fuel {
+public class SportCar implements Vehicle {
     @Override
     public void changeGear() {
         System.out.println("Механическая коробка передач. Включить первую, дальше переключать до шестой");

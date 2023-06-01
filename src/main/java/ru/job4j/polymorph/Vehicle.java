@@ -1,6 +1,6 @@
 package ru.job4j.polymorph;
 
-public interface Vehicle {
+public interface Vehicle extends Fuel {
 
     void accelerate();
 
