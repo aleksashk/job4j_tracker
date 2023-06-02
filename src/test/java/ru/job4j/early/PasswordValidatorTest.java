@@ -1,6 +1,7 @@
 package ru.job4j.early;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -143,4 +144,5 @@ public class PasswordValidatorTest {
         String expected = "Password shouldn't contain substrings: qwerty, 12345, password, admin, user";
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
+
 }
