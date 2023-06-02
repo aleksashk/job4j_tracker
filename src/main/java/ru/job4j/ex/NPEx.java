@@ -6,7 +6,9 @@ public class NPEx {
         shops[0] = "Petr Arsentev";
         for (int index = 0; index < shops.length; index++) {
             String el = shops[index];
-            System.out.println(el + " has a size : " + el.length());
+            if (el != null) {
+                System.out.println(el + " has a size : " + el.length());
+            }
         }
     }
 }
