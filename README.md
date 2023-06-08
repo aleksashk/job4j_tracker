@@ -1,13 +1,17 @@
-# [job4j_tracker][1]
+# job4j_tracker
 
-This project is a ***console application***. The user is shown a menu with program **capabilities**.
+## О проекте
 
-__The program can__:
+Этот проект - консольное приложение. Пользователю отображается меню с возможностями программы.
 
-* Add a request.
-* Replace the application for a new application by ID.
-* Delete application by ID.
-* Display a list of all orders.
-* Search by application name.
+Программа может:
 
-[1]: (https://github.com/aleksashk/job4j_tracker)
+1. Добавлять заявку.
+
+1. Заменять заявку на новую заявку по ID.
+
+1. Удалять заявку по ID.
+
+1. Отображать список всех заявок.
+
+1. Производить поиск по имени заявки.
