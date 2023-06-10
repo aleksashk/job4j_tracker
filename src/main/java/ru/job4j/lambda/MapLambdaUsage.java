@@ -3,6 +3,7 @@ package ru.job4j.lambda;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class MapLambdaUsage {
     public static void main(String[] args) {
@@ -19,5 +20,18 @@ public class MapLambdaUsage {
         map.replaceAll(function);
 
         map.forEach((k, v) -> System.out.println("Key: " + k + ", value: " + v));
+
+        Map<Integer, String> map1 = new HashMap<>();
+        map.put(1, "name");
+
+        BiFunction<Integer, String, String> function1 = (key, value) -> value + "_" + key;
+        String result = map.computeIfPresent(1, function1);
+        System.out.println("Current value: " + result);
+        map.forEach((key, value) -> System.out.println("Key: " + key + ", value: " + value));
+
+        Map<String, Integer> map2 = new HashMap<>();
+        Function<String, Integer> function2 = String::length;
+        map2.computeIfAbsent("Aleksandr", function2);
+        map2.forEach((key, value) -> System.out.println("Key: " + key + ", value: " + value));
     }
 }
