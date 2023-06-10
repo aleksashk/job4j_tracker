@@ -19,6 +19,8 @@ public class FunctionalInterfaces {
         Consumer<String> simpleConsumer = (s) -> System.out.println(s);
         simpleConsumer.accept(simpleSup.get());
         System.out.println(simpleSup.get());
+        BiConsumer<String, String> simpleBiConsumer = (s1, s2) -> System.out.println(s1 + s2);
+        simpleBiConsumer.accept(simpleSup.get(), " and Second String");
 
         List<String> simpleList = List.of("one", "two", "three", "one", "two", "three");
         Supplier<Set<String>> simpleSupHash = () -> new HashSet<>(simpleList);
