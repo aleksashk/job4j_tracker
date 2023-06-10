@@ -14,22 +14,22 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < evenElements.size() / 2; i++) {
-            Character ch = evenElements.pollFirst();
+        int size = evenElements.size();
+        for (int i = 0; i < size;) {
+            Character ch = evenElements.peekFirst();
             sb.append(ch);
-            evenElements.add(ch);
-            evenElements.add(evenElements.pollFirst());
+            evenElements.pollFirst();
+            evenElements.pollFirst();
+            i += 2;
         }
         return sb.toString();
     }
 
     private String getDescendingElements() {
         StringBuilder sb = new StringBuilder();
-        for (int i = descendingElements.size(); i > 0; i--) {
-            Character ch = descendingElements.pollLast();
-            sb.append(ch);
-            descendingElements.addFirst(ch);
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
+            sb.append(descendingElements.pollLast());
         }
         return sb.toString();
     }
