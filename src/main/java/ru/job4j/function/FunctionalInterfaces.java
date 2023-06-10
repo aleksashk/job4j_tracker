@@ -64,7 +64,7 @@ public class FunctionalInterfaces {
             }
         }
 
-        UnaryOperator<StringBuilder> builder = (s) -> s.reverse();
+        UnaryOperator<StringBuilder> builder = StringBuilder::reverse;
         System.out.println("The String after the reverse is: " + builder.apply(new StringBuilder("This is simple String")));
 
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
