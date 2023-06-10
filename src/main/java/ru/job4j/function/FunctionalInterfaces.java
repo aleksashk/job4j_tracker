@@ -2,8 +2,10 @@ package ru.job4j.function;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
@@ -16,6 +18,12 @@ public class FunctionalInterfaces {
         Supplier<String> simpleSup = () -> "New String For Interface";
         System.out.println(simpleSup.get());
 
+        List<String> simpleList = List.of("one", "two", "three", "one", "two", "three");
+        Supplier<Set<String>> simpleSupHash = () -> new HashSet<>(simpleList);
+        Set<String> strings = simpleSupHash.get();
+        for (String string : strings) {
+            System.out.println(string);
+        }
         Map<Integer, String> map = new HashMap<>();
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
         BiConsumer<Integer, String> biCon = (i, str) -> map.put(i, str);
