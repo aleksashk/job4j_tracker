@@ -31,6 +31,13 @@ public class FunctionalInterfaces {
         Map<Integer, String> map = new HashMap<>();
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
         BiConsumer<Integer, String> biCon = (i, str) -> map.put(i, str);
+        Supplier<Set<String>> simpleSupplier = () -> new HashSet<>(list);
+        BiConsumer<Integer, String> consumer = (s1, s2) -> System.out.println(s1 + s2);
+        Set<String> simpleString = simpleSupplier.get();
+        int g = 1;
+        for (String string : strings) {
+            consumer.accept(g++, " is " + string);
+        }
 
         int counter = 1;
         for (String s : list) {
