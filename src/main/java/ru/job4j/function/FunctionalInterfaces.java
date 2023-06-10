@@ -13,6 +13,9 @@ import java.util.function.Supplier;
 public class FunctionalInterfaces {
 
     public static void main(String[] args) {
+        Supplier<String> simpleSup = () -> "New String For Interface";
+        System.out.println(simpleSup.get());
+
         Map<Integer, String> map = new HashMap<>();
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
         BiConsumer<Integer, String> biCon = (i, str) -> map.put(i, str);
