@@ -16,6 +16,8 @@ public class FunctionalInterfaces {
 
     public static void main(String[] args) {
         Supplier<String> simpleSup = () -> "New String For Interface";
+        Consumer<String> simpleConsumer = (s) -> System.out.println(s);
+        simpleConsumer.accept(simpleSup.get());
         System.out.println(simpleSup.get());
 
         List<String> simpleList = List.of("one", "two", "three", "one", "two", "three");
