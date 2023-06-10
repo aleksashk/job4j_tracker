@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public class FunctionalInterfaces {
 
@@ -62,6 +63,9 @@ public class FunctionalInterfaces {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
+
+        UnaryOperator<StringBuilder> builder = (s) -> s.reverse();
+        System.out.println("The String after the reverse is: " + builder.apply(new StringBuilder("This is simple String")));
 
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         System.out.println(sup.get());
