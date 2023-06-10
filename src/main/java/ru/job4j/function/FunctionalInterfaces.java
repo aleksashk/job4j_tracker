@@ -10,6 +10,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class FunctionalInterfaces {
@@ -38,6 +39,10 @@ public class FunctionalInterfaces {
         for (String string : strings) {
             consumer.accept(g++, " is " + string);
         }
+
+        Predicate<String> simplePredicate = s -> s.isEmpty();
+        System.out.println("The String is empty: " + simplePredicate.test(""));
+        System.out.println("The String is empty: " + simplePredicate.test("test"));
 
         int counter = 1;
         for (String s : list) {
