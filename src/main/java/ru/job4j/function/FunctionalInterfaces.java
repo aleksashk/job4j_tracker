@@ -44,6 +44,10 @@ public class FunctionalInterfaces {
         System.out.println("The String is empty: " + simplePredicate.test(""));
         System.out.println("The String is empty: " + simplePredicate.test("test"));
 
+        BiPredicate<String, Integer> condition = (s, i) -> s.contains(i.toString());
+        System.out.println("The String is contains substring: " + condition.test("String123", 123));
+        System.out.println("The String is contains substring: " + condition.test("String13", 12));
+
         int counter = 1;
         for (String s : list) {
             biCon.accept(counter++, s);
