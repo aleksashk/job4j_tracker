@@ -33,5 +33,14 @@ public class MapLambdaUsage {
         Function<String, Integer> function2 = String::length;
         map2.computeIfAbsent("Aleksandr", function2);
         map2.forEach((key, value) -> System.out.println("Key: " + key + ", value: " + value));
+
+        Map<String, Integer> map3 = new HashMap<>();
+        map3.put("Shoes", 200);
+
+        BiFunction<Integer, Integer, Integer> function3 = (oldValue, newValue) -> oldValue - newValue;
+        int newPrice = map3.merge("Shoes", 60, function3);
+        System.out.println("New price: " + newPrice);
+        System.out.println("Price of shirt: " + map3.merge("Shirt", 100, function3));
+        map3.forEach((key, value) -> System.out.println("Key: " + key + ", value: " + value));
     }
 }
