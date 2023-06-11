@@ -8,8 +8,7 @@ public class MostUsedSymbol {
         String input = "slogan of java language: write once, run everywhere".replaceAll(" ", "");
         Map<Character, Integer> map = new HashMap<>();
         for (char character : input.toCharArray()) {
-            map.computeIfPresent(character, (k, v) -> v + 1);
-            map.putIfAbsent(character, 1);
+            map.merge(character, 1, (oldValue, newValue) -> oldValue + 1);
         }
 
         int max = 0;
