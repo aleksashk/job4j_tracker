@@ -36,8 +36,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjects = pupil.subjects();
             for (Subject subj : subjects) {
-                int score = map.getOrDefault(subj.name(), 0);
-                map.put(subj.name(), subj.score() + score);
+                map.merge(subj.name(), subj.score(), (oldValue, newValue) -> oldValue + subj.score());
             }
         }
 
@@ -68,8 +67,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjects = pupil.subjects();
             for (Subject subj : subjects) {
-                int score = map.getOrDefault(subj.name(), 0);
-                map.put(subj.name(), subj.score() + score);
+                map.merge(subj.name(), subj.score(), (oldValue, newValue) -> oldValue + subj.score());
             }
         }
 
