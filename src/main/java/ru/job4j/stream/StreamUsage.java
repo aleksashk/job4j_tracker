@@ -33,6 +33,9 @@ public class StreamUsage {
             List<Task> bugs = tasks.stream().filter(task -> task.name.contains("Bug"))
                     .toList();
             bugs.forEach(System.out::println);
+
+            List<String> bugsOnlyName = tasks.stream().map(task -> task.name).toList();
+            bugsOnlyName.forEach(System.out::println);
         }
     }
 }
