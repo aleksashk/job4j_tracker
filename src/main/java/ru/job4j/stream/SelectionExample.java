@@ -19,5 +19,10 @@ public class SelectionExample {
                 .limit(2)
                 .toList();
         System.out.println(result3);
+        String result4 = strings.stream()
+                .skip(2)
+                .findFirst()
+                .orElse("Default value");
+        System.out.println(result4);
     }
 }
