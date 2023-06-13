@@ -24,5 +24,10 @@ public class SelectionExample {
                 .findFirst()
                 .orElse("Default value");
         System.out.println(result4);
+        String result5 = strings.stream()
+                .skip(strings.size() - 1)
+                .findFirst()
+                .orElse("Default value");
+        System.out.println(result5);
     }
 }
