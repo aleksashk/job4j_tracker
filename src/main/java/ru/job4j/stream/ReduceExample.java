@@ -9,9 +9,16 @@ public class ReduceExample {
         Optional<Integer> sum = nums.stream()
                 .reduce((a, b) -> a + b);
         System.out.println(sum.get());
+
         List<String> strings = List.of("1", "2", "3", "4", "55");
         Optional<String> sumStrings = strings.stream()
                 .reduce((a, b) -> a + ", " + b);
         System.out.println(sumStrings.get());
+
+        List<Integer> nums1 = List.of(1, 2, 3, 4, 55);
+        int sum1 = nums.stream()
+                .reduce(2, (a, b) -> a + b);
+        System.out.println(sum1);
+
     }
 }
