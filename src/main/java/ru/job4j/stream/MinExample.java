@@ -11,5 +11,18 @@ public class MinExample {
         Optional<Integer> min = list.stream()
                 .min(Comparator.naturalOrder());
         System.out.println(min.get());
+
+        List<Person> people = Arrays.asList(
+                new Person("Михаил", 35),
+                new Person("Ольга", 26),
+                new Person("Антон", 20),
+                new Person("Виктор", 16),
+                new Person("Анна", 29)
+        );
+
+        Optional<Person> youngestPerson = people.stream()
+                .min(Comparator.comparing(Person::getAge));
+        int age = youngestPerson.get().getAge();
+        System.out.println(age);
     }
 }
