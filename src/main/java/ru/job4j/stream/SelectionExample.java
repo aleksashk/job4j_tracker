@@ -10,5 +10,9 @@ public class SelectionExample {
                 .skip(2)
                 .toList();
         System.out.println(result);
+        List<String> result2 = strings.stream()
+                .limit(2)
+                .toList();
+        System.out.println(result2);
     }
 }
