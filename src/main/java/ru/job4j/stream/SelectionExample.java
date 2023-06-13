@@ -14,5 +14,10 @@ public class SelectionExample {
                 .limit(2)
                 .toList();
         System.out.println(result2);
+        List<String> result3 = strings.stream()
+                .skip(2)
+                .limit(2)
+                .toList();
+        System.out.println(result3);
     }
 }
