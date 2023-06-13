@@ -9,5 +9,10 @@ public class MatchExample {
         boolean result = strings.stream()
                 .noneMatch("Grass"::contains);
         System.out.println(result);
+
+        List<String> strings1 = Arrays.asList("One", "Boom", "Eight", "Seven", "Eleven", "Five", "Zero", "Two", "Three");
+        boolean result1 = strings1.stream()
+                .anyMatch(e -> e.endsWith("m"));
+        System.out.println(result1);
     }
 }
