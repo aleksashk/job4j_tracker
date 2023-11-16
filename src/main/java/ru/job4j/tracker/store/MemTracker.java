@@ -1,9 +1,11 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.store;
+
+import ru.job4j.tracker.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemTracker {
+public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
@@ -32,7 +34,7 @@ public class MemTracker {
         return rsl;
     }
 
-    List<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
         for (Item item : items) {
             if (item.getName().equals(key)) {
@@ -42,15 +44,12 @@ public class MemTracker {
         return rsl;
     }
 
-    public boolean delete(int id) {
+    public  void delete(int id) {
         int index = indexOf(id);
-        boolean rsl = false;
         if (index == -1) {
             System.out.println("Element " + id + " not found");
-            return rsl;
         }
         items.remove(index);
-        return true;
     }
 
     private int indexOf(int id) {
@@ -63,5 +62,4 @@ public class MemTracker {
         }
         return rsl;
     }
-
 }

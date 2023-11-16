@@ -1,11 +1,16 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.model.Item;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.store.Store;
 
 import java.util.List;
 
-public class ShowAllAction implements UserAction {
+public class FindAllAction implements UserAction {
     private final Output out;
 
-    public ShowAllAction(Output out) {
+    public FindAllAction(Output out) {
         this.out = out;
     }
 
@@ -15,9 +20,9 @@ public class ShowAllAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, MemTracker memTracker) {
+    public boolean execute(Input input, Store store) {
         out.println(name());
-        List<Item> items = memTracker.findAll();
+        List<Item> items = store.findAll();
         if (items.size() > 0) {
             for (Item item : items) {
                 out.println(item);

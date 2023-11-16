@@ -1,10 +1,14 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.items;
+
+import ru.job4j.tracker.model.Item;
+import ru.job4j.tracker.store.MemTracker;
+import ru.job4j.tracker.store.Store;
 
 import java.util.List;
 
 public final class SingleTracker {
     private static SingleTracker instance = null;
-    private MemTracker memTracker = new MemTracker();
+    private Store store = new MemTracker();
 
     private SingleTracker() {
     }
@@ -17,26 +21,26 @@ public final class SingleTracker {
     }
 
     public Item add(Item item) {
-        return memTracker.add(item);
+        return store.add(item);
     }
 
     public Item findById(int id) {
-        return memTracker.findById(id);
+        return store.findById(id);
     }
 
     public List<Item> findAll() {
-        return memTracker.findAll();
+        return store.findAll();
     }
 
     public boolean replace(int id, Item item) {
-        return memTracker.replace(id, item);
+        return store.replace(id, item);
     }
 
     List<Item> findByName(String key) {
-        return memTracker.findByName(key);
+        return store.findByName(key);
     }
 
-    public boolean delete(int id) {
-        return memTracker.delete(id);
+    public void delete(int id) {
+        store.delete(id);
     }
 }
