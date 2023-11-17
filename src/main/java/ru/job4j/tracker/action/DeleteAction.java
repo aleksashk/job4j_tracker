@@ -1,7 +1,6 @@
 package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.store.Store;
 
@@ -21,13 +20,20 @@ public class DeleteAction implements UserAction {
     public boolean execute(Input input, Store store) {
         out.println(name());
         int id = input.askInt("Enter id: ");
-        String name = input.askStr("Enter name: ");
-        Item item = new Item(name);
-        if (store.replace(id, item)) {
-            out.println("Заявка удалена успешно.");
-        } else {
-            out.println("Ошибка удаления заявки.");
+
+        if (store.findById(id) == null) {
+            out.println("Ошибка: элемент с таким id не найден.");
+            return false;
         }
-        return true;
+
+        store.delete(id);
+
+        if (store.findById(id) == null) {
+            out.println("Заявка удалена успешно.");
+            return true;
+        } else {
+            out.println("Ошибка при удалении заявки.");
+            return false;
+        }
     }
 }
